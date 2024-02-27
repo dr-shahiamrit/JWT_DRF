@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 from datetime import timedelta
+import os
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -139,6 +140,17 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Config to remove default login model
 AUTH_USER_MODEL = 'account.User'
 
+
+# Email configuration
+EMAIL_BACKEND="django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
+EMAIL_USE_TLS = True
+
+
+
 # JWT Setting
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=20),
@@ -157,9 +169,13 @@ SIMPLE_JWT = {
     "JTI_CLAIM": "jti",
 }
 
+PASSWORD_RESET_TIMEOUT = 900   # 900 sec or 15 mins
+
+
 # Allow Origin
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000"
 ]
+
 

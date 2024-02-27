@@ -1,0 +1,3 @@
+EMAIL_USER = 'xyz@gmail.com'
+EMAIL_PASS = 'sefe'
+EMAIL_FROM = 'xyz@gmail.com'
